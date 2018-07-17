@@ -1,0 +1,16 @@
+#notes {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+
+  display: flex;
+}
+
+.sidebar {
+  background: #8aa;
+  width: 320px;
+}
+
+.note {
+  flex: 1;
+}
