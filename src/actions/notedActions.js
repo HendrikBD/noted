@@ -1,8 +1,8 @@
 import { TOGGLE_NODE } from './types';
 
-export const toggleNode = nodeId => {
-  dispatch({
+export function toggleNode(nodeId) {
+  return {
     type: TOGGLE_NODE,
     nodeId: nodeId
-  })
+  }
 }
