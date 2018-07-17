@@ -3,13 +3,15 @@ import React from 'react';
 import {render} from 'react-dom';
 
 import { Notes } from './components/notes.js';
+import { Navbar } from './components/navbar.js';
 
 class App extends React.Component {
   render () {
-    return (<div>
-      <p>Hello from React!</p>
-      <Notes/>
-    </div>
+    return (
+      <div>
+        <Navbar/>
+        <Notes/>
+      </div>
     )
   }
 }
