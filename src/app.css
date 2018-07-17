@@ -1,3 +1,17 @@
 #app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #eee;
+}
+
+#navbar {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+
   background: red;
+  z-index: 10;
 }
