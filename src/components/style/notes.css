@@ -31,6 +31,23 @@
   grid-template-columns: 20px 10px 1fr;
 }
 
+.node .head .icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.node .icon svg {
+  position: relative;
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  cursor: pointer;
+}
 
 .node .title {
   grid-column: 2/4;
@@ -46,4 +63,3 @@
   top: -1px;
   grid-column: 1/3;
 }
-
