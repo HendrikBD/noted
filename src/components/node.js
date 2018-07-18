@@ -20,6 +20,7 @@ export default class Node extends React.Component {
         </div>
 
         <div className="trace">
+          <TraceBlock nodes={this.props.nodes} nodeId={this.props.nodeId} key={this.props.nodeId}/>
         </div>
 
         <div className="children">
