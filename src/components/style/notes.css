@@ -18,3 +18,16 @@
 .note {
   flex: 1;
 }
+
+
+/* node styling */
+
+.hierarchy {
+  margin: 30px 20px;
+}
+
+.node {
+  display: grid;
+  grid-template-columns: 20px 10px 1fr;
+}
+
