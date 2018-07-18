@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import './app.css';
-import { Notes } from './components/notes.js';
+import Notes from './components/notes.js';
 import { Navbar } from './components/navbar.js';
 import store from './store';
 

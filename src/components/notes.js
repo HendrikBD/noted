@@ -5,7 +5,7 @@ import { Sidebar } from './sidebar'
 var marked = require("marked");
 marked.setOptions({sanitize: true})
 
-export class Notes extends React.Component {
+class Notes extends React.Component {
 
   render() {
 
@@ -22,3 +22,5 @@ export class Notes extends React.Component {
   }
 }
 
+
+export default connect(null, { toggleNode })(Notes);
