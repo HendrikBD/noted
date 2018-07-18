@@ -2,64 +2,70 @@ const initialState = {
   noted: {
     nodes: {
       byId: {
+        0: {
+          name: 'root',
+          parentNode: null,
+          childNodes: [1, 6],
+          toggled: true
+        },
         1: {
           id: 1,
           name: 'Software',
-          parentId: null,
-          childIds: [2],
+          parentNode: 0,
+          childNodes: [2,5],
           toggled: true
         },
         2: {
           id: 2,
           name: 'Projects',
-          parentId: 1,
-          childIds: [3, 4],
+          parentNode: 1,
+          childNodes: [3, 4],
           toggled: false
         },
         3: {
           id: 3,
           name: 'Hopper',
-          parentId: 2,
-          childIds: [],
+          parentNode: 2,
+          childNodes: [],
           toggled: false
         },
         4: {
           id: 4,
           name: 'Noted',
-          parentId: 2,
-          childIds: [],
+          parentNode: 2,
+          childNodes: [],
           toggled: false
         },
         5: {
           id: 5,
           name: 'Python',
-          parentId: 1,
-          childIds: [],
+          parentNode: 1,
+          childNodes: [],
           toggled: false
         },
         6: {
           id: 6,
           name: 'Books',
-          parentId: null,
-          childIds: [7,8],
+          parentNode: 0,
+          childNodes: [7,8],
           toggled: true
         },
         7: {
           id: 7,
           name: '1984',
-          parentId: 6,
-          childIds: [],
+          parentNode: 6,
+          childNodes: [],
           toggled: false
         },
         8: {
           id: 8,
           name: 'Brave New World',
-          parentId: 6,
-          childIds: [],
+          parentNode: 6,
+          childNodes: [],
           toggled: false
         }
       },
-      allIds: [1,2,3,4,5,6,7,8]
+      allIds: [0,1,2,3,4,5,6,7,8]
     }
   }
 }
