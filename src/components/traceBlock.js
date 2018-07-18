@@ -15,7 +15,7 @@ export default class Node extends React.Component {
 
   render() {
 
-    let points = "10,0 10,10" ;
+    let points = "10,0 10," + this.props.nodes.byId[this.props.nodeId].traceHeight;
     return(
       <div className="traceBlock">
         <svg>
