@@ -31,3 +31,19 @@
   grid-template-columns: 20px 10px 1fr;
 }
 
+
+.node .title {
+  grid-column: 2/4;
+}
+
+.node .children {
+  grid-column: 3/4;
+  margin-top: 10px;
+}
+
+.node .trace {
+  position: relative;
+  top: -1px;
+  grid-column: 1/3;
+}
+
