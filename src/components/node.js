@@ -14,8 +14,19 @@ class Node extends React.Component {
     this.props.toggleNode(this.props.nodeId)
   }
 
+  getTraceHeights(){
+    let traceHeights = [];
+
+    this.props.nodes.byId[this.props.nodeId].childNodes.forEach((child) => {
+      let nestedChildren = countNestedChildren(this.props.nodes, child) + 1;
+      traceHeights.push(28*nestedChildren)
+    })
+  }
 
   render() {
+    let childNodes;
+    this.getTraceHeights()
+
     if(this.props.nodes.byId[this.props.nodeId].toggled){
       childNodes=[];
       this.props.nodes.byId[this.props.nodeId].childNodes.map(nodeId=>
