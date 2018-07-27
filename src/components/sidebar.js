@@ -11,4 +11,4 @@ const Sidebar = () => (
   </div>
 )
 
-export { Sidebar }
+export default Sidebar
