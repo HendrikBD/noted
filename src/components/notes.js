@@ -1,6 +1,8 @@
 import React from 'react';
-import css from './style/notes.css'
-import { Sidebar } from './sidebar'
+import PropTypes from 'prop-types';
+
+import './style/notes.css';
+import Sidebar from './sidebar';
 
 var marked = require("marked");
 marked.setOptions({sanitize: true})
@@ -23,4 +25,4 @@ class Notes extends React.Component {
 }
 
 
-export default connect(null, { toggleNode })(Notes);
+export default Notes;
