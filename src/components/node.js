@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { toggleNode } from '../actions/notedActions';
 
 import TraceBlock from './traceBlock';
 
 
-export default class Node extends React.Component {
+class Node extends React.Component {
+  constructor(props){
+    super(props)
+  }
 
   onClick(){
     this.props.toggleNode(this.props.nodeId)
@@ -34,17 +38,27 @@ export default class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        <div className="trace">
-          <TraceBlock nodes={this.props.nodes} nodeId={this.props.nodeId} key={this.props.nodeId}/>
-        </div>
+        <TraceBlock nodes={this.props.nodes} nodeId={this.props.nodeId} key={this.props.nodeId}/>
 
         <div className="children">
-          { this.props.nodes.byId[this.props.nodeId].childNodes.map(nodeId =>
-            <Node nodes={this.props.nodes} nodeId={nodeId}/>
-          )}
+          {childNodes}
         </div>
 
       </div>
     )
   }
 }
+
+Node.propTypes = {
+  nodes: PropTypes.shape({
+    byId: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      parentNode: PropTypes.number,
+      childNodes: PropTypes.arrayOf(PropTypes.number),
+      toggled: PropTypes.bool
+    })),
+    allIds: PropTypes.arrayOf(PropTypes.number).isRequired
+  })
+}
+
+export default Node
