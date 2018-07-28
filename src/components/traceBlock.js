@@ -29,13 +29,15 @@ export default class Node extends React.Component {
   }
 
   render() {
+    let maxTrace = Math.max(0, ...this.props.traceHeights);
 
-    let points = "10,0 10," + this.props.nodes.byId[this.props.nodeId].traceHeight;
     return(
       <div className="traceBlock">
-        <svg>
-          <polyline points={points} stroke="black" stroke-width="5"/>
-        </svg>
+        <div className="trace" style={{height: maxTrace+8 +'px'}}>
+          <svg>
+            {this.getTraceSVG()}
+          </svg>
+        </div>
       </div>
     )
   }
