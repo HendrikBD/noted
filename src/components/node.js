@@ -27,8 +27,9 @@ class Node extends React.Component {
   }
 
   render() {
+
     let childNodes;
-    this.getTraceHeights()
+    let traceOn = (this.props.nodes.byId[this.props.nodeId].childNodes.length>0 && this.props.nodes.byId[this.props.nodeId].toggled)
 
     if(this.props.nodes.byId[this.props.nodeId].toggled){
       childNodes=[];
@@ -52,7 +53,7 @@ class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        <TraceBlock nodes={this.props.nodes} nodeId={this.props.nodeId} key={this.props.nodeId}/>
+        {traceOn ? <TraceBlock nodes={this.props.nodes} nodeId={this.props.nodeId} traceHeights={this.getTraceHeights()} key={this.props.nodeId}/> : ""}
 
         <div className="children">
           {childNodes}
