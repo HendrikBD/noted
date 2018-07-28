@@ -79,7 +79,7 @@ Node.propTypes = {
 function countNestedChildren(nodes, nodeId) {
   let nestedChildren = 0;
 
-  if(nodes.byId[nodeId].childNodes.length>0){
+  if(nodes.byId[nodeId].childNodes.length>0 && nodes.byId[nodeId].toggled){
     nodes.byId[nodeId].childNodes.forEach((child) => {
       nestedChildren++;
       nestedChildren += countNestedChildren(nodes, child);
