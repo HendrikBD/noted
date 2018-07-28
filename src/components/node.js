@@ -15,12 +15,15 @@ class Node extends React.Component {
   }
 
   getTraceHeights(){
-    let traceHeights = [];
+    let traceHeights = [16];
 
-    this.props.nodes.byId[this.props.nodeId].childNodes.forEach((child) => {
-      let nestedChildren = countNestedChildren(this.props.nodes, child) + 1;
-      traceHeights.push(28*nestedChildren)
-    })
+    for(let i=0; i<this.props.nodes.byId[this.props.nodeId].childNodes.length-1; i++){
+      let child = this.props.nodes.byId[this.props.nodeId].childNodes[i];
+      let nestedChildren = countNestedChildren(this.props.nodes, child);
+      traceHeights.push(28*(nestedChildren+1) + traceHeights[i])
+    }
+
+    return traceHeights
   }
 
   render() {
