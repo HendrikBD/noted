@@ -42,8 +42,8 @@ class Node extends React.Component {
         <div className="head">
           <div className='icon' onClick={this.onClick.bind(this)}>
             <svg>
-              <circle cx='9' cy='9' r='7.5' stroke-width='3' stroke='black' fill="none"></circle>
-              <circle cx='9' cy='9' r='4.5' stroke-width='1' fill="black"></circle>
+              <circle cx='9' cy='9' r='7.5' strokeWidth='3' stroke='black' fill="none"></circle>
+              <circle cx='9' cy='9' r='4.5' strokeWidth='1' fill="black"></circle>
             </svg>
           </div>
         </div>

@@ -16,7 +16,7 @@ class Notes extends React.Component {
     return (
       <div id="notes">
         <Sidebar/>
-        <div class="note">
+        <div className="note">
           <div dangerouslySetInnerHTML={{__html: mark}}></div>
         </div>
       </div>
