@@ -1,4 +1,4 @@
-import { TOGGLE_NODE, UPDATE_TRACE, UPDATE_TRACE_HEIGHT, UPDATE_CHILD_HEIGHTS, UPDATE_TRACE_WIDTHS } from '../actions/types';
+import { TOGGLE_NODE, UPDATE_TRACE } from '../actions/types';
 import initialState from '../lib/initialState';
 
 export default function(state = initialState, action) {

@@ -1,4 +1,4 @@
-import { TOGGLE_NODE, UPDATE_TRACE, UPDATE_TRACE_HEIGHT, UPDATE_CHILD_HEIGHTS, UPDATE_TRACE_WIDTHS } from './types';
+import { TOGGLE_NODE, UPDATE_TRACE } from './types';
 
 export function toggleNode(nodeId) {
   return {
