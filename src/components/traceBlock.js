@@ -17,12 +17,12 @@ export default class Node extends React.Component {
     let maxTrace = Math.max(0, ...this.props.traceHeights);
 
     let trace = [
-      <path d={"M 10,0 v " + maxTrace} stroke-width="8" stroke="black"/>,
-      <path d={"M 10," + maxTrace + " a 4 4 0 0 0 4 4"} stroke-width="8" stroke="black"/>
+      <path key={0} d={"M 10,0 v " + traceHeight} strokeWidth="8" stroke="black"/>,
+      <path key={1} d={"M 10," + traceHeight+ " a 4 4 0 0 0 4 4"} strokeWidth="8" stroke="black"/>
     ]
 
-    this.props.traceHeights.forEach(height => {
-      trace.push(<path d={"M 14," + Number(height+4) + "h 25"} stroke-width="8" stroke="black"/>)
+    this.props.traceHeights.forEach((height,i) => {
+      trace.push(<path key={i+2} d={"M 14," + Number(height+4) + "h 25"} strokeWidth="8" stroke="black"/>)
     })
 
     return trace

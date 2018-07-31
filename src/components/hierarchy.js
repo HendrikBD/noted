@@ -39,17 +39,17 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-Hierarchy.propTypes = {
-  nodes: PropTypes.shape({
-    byId: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string,
-      parentNode: PropTypes.number,
-      childNodes: PropTypes.arrayOf(PropTypes.number),
-      toggled: PropTypes.bool
-    })),
-    allIds: PropTypes.arrayOf(PropTypes.number).isRequired
-  })
-}
+// Hierarchy.propTypes = {
+//   nodes: PropTypes.shape({
+//     byId: PropTypes.arrayOf(PropTypes.shape({
+//       name: PropTypes.string,
+//       parentNode: PropTypes.number,
+//       childNodes: PropTypes.arrayOf(PropTypes.number),
+//       toggled: PropTypes.bool
+//     })),
+//     allIds: PropTypes.arrayOf(PropTypes.number).isRequired
+//   })
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {
   areStatePropsEqual: () => false,

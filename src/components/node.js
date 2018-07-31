@@ -27,14 +27,12 @@ class Node extends React.Component {
   }
 
   render() {
-
-    let childNodes;
+    var childNodes=[];
     let traceOn = (this.props.nodes.byId[this.props.nodeId].childNodes.length>0 && this.props.nodes.byId[this.props.nodeId].toggled)
 
     if(this.props.nodes.byId[this.props.nodeId].toggled){
-      childNodes=[];
       this.props.nodes.byId[this.props.nodeId].childNodes.map(nodeId=>
-        childNodes.push(<Node nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode}/>)
+        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTrace={this.props.updateTrace} updateParentTrace={this.updateParentTrace.bind(this)}/>)
       )
     }
 
@@ -64,17 +62,17 @@ class Node extends React.Component {
   }
 }
 
-Node.propTypes = {
-  nodes: PropTypes.shape({
-    byId: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string,
-      parentNode: PropTypes.number,
-      childNodes: PropTypes.arrayOf(PropTypes.number),
-      toggled: PropTypes.bool
-    })),
-    allIds: PropTypes.arrayOf(PropTypes.number).isRequired
-  })
-}
+// Node.propTypes = {
+//   nodes: PropTypes.shape({
+//     byId: PropTypes.arrayOf(PropTypes.shape({
+//       name: PropTypes.string,
+//       parentNode: PropTypes.number,
+//       childNodes: PropTypes.arrayOf(PropTypes.number),
+//       toggled: PropTypes.bool
+//     })),
+//     allIds: PropTypes.arrayOf(PropTypes.number).isRequired
+//   })
+// }
 
 function countNestedChildren(nodes, nodeId) {
   let nestedChildren = 0;
