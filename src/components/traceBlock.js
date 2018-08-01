@@ -29,11 +29,16 @@ export default class Node extends React.Component {
   }
 
   render() {
-    let maxTrace = Math.max(0, ...this.props.traceHeights);
+    let traceBlockHeight;
+    if(this.props.nodes.byId[this.props.nodeId].toggled) {
+      traceBlockHeight = Math.max(0, ...this.props.nodes.byId[this.props.nodeId].childHeights) + 8;
+    } else {
+      traceBlockHeight = 0;
+    }
 
     return(
       <div className="traceBlock">
-        <div className="trace" style={{height: maxTrace+8 +'px'}}>
+        <div className="trace" style={{height: traceBlockHeight +'px'}}>
           <svg>
             {this.getTraceSVG()}
           </svg>

@@ -52,7 +52,7 @@ class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        {traceOn ? <TraceBlock nodes={this.props.nodes} nodeId={this.props.nodeId} traceHeights={this.getTraceHeights()} key={this.props.nodeId}/> : ""}
+        <TraceBlock ref={'trace'} nodes={this.props.nodes} nodeId={this.props.nodeId} updateTrace={this.props.updateTrace}/>
 
         <div className="children">
           {childNodes}
