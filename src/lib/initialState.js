@@ -7,6 +7,7 @@ const initialState = {
           parentNode: null,
           childNodes: [1,6],
           traceHeights: [0,0],
+          toggled: true
         },
         1: {
           id: 1,
@@ -16,7 +17,7 @@ const initialState = {
           traceHeight: 0,
           traceWidths:  [0,0],
           childHeights: [0,0],
-          toggled: true
+          toggled: false
         },
         2: {
           id: 2,
@@ -32,7 +33,7 @@ const initialState = {
           id: 3,
           name: 'Hopper',
           parentNode: 2,
-          childNodes: [],
+          childNodes: [9],
           traceHeight: 0,
           traceWidths: [],
           childHeights: [],
@@ -82,6 +83,16 @@ const initialState = {
           id: 8,
           name: 'Brave New World',
           parentNode: 6,
+          childNodes: [],
+          traceHeight: 0,
+          traceWidths: [],
+          childHeights: [],
+          toggled: false,
+        },
+        9: {
+          id: 9,
+          name: 'Another One',
+          parentNode: 3,
           childNodes: [],
           traceHeight: 0,
           traceWidths: [],
