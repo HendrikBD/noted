@@ -43,7 +43,7 @@ export default class Node extends React.Component {
     this.props.updateTrace(this.props.nodeId, {traceHeight: node.traceHeight+2*Math.sign(traceDiff)});
 
     // If the last childs width and the trace height are equal to the target values. When closing, target values are zero, when opening target values are a static width and the max trace
-    if(this.props.nodes.byId[this.props.nodeId].traceHeight<maxTrace){
+    if(this.props.nodes.byId[this.props.nodeId].traceHeight != maxTrace){
       window.requestAnimationFrame(this.updateTrace.bind(this))
     }
   }
