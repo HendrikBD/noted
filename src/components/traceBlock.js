@@ -17,17 +17,19 @@ export default class Node extends React.Component {
     return height
   }
 
+  // Finds and returns the svg drawing to be rendered.
   getTraceSVG() {
-    let maxTrace = Math.max(0, ...this.props.traceHeights);
+    let traceHeight = this.props.nodes.byId[this.props.nodeId].traceHeight;
+    let trace = [];
 
-    let trace = [
-      <path key={0} d={"M 10,0 v " + traceHeight} strokeWidth="8" stroke="black"/>,
-      <path key={1} d={"M 10," + traceHeight+ " a 4 4 0 0 0 4 4"} strokeWidth="8" stroke="black"/>
-    ]
+    if(this.props.nodes.byId[this.props.nodeId].toggled) {
+      trace.push(<path key={0} d={"M 10,0 v " + traceHeight} strokeWidth="8" stroke="black"/>)
+      trace.push(<path key={1} d={"M 10," + traceHeight+ " a 4 4 0 0 0 4 4"} strokeWidth="8" stroke="black"/>)
 
-    this.props.traceHeights.forEach((height,i) => {
-      trace.push(<path key={i+2} d={"M 14," + Number(height+4) + "h 25"} strokeWidth="8" stroke="black"/>)
-    })
+      this.props.nodes.byId[this.props.nodeId].childHeights.forEach((height,i) => {
+        trace.push(<path key={i+2} d={"M 14," + Number(height+4) + "h 25"} strokeWidth="8" stroke="black"/>)
+      })
+    }
 
     return trace
   }
