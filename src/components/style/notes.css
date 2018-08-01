@@ -30,6 +30,13 @@
   display: grid;
   grid-template-columns: 20px 10px 1fr;
   margin-top: 6px;
+
+  height: 0px;
+  overflow: hidden;
+}
+
+.node.toggled {
+  height: auto;
 }
 
 .node .head .icon {
@@ -55,6 +62,11 @@
 
 .node .children {
   grid-column: 3/4;
+  height: 0px;
+}
+
+.node.toggled {
+  height: auto;
 }
 
 .node .traceBlock {
