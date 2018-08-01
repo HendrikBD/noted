@@ -66,7 +66,7 @@ export default class Node extends React.Component {
   render() {
     let traceBlockHeight;
     if(this.props.nodes.byId[this.props.nodeId].toggled) {
-      traceBlockHeight = Math.max(0, ...this.props.nodes.byId[this.props.nodeId].childHeights) + 8;
+      traceBlockHeight = this.props.nodes.byId[this.props.nodeId].traceHeight + 8;
     } else {
       traceBlockHeight = 0;
     }
