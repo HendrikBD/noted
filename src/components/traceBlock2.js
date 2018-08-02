@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Node extends React.Component {
+export default class TraceBlock extends React.Component {
   constructor(props){
     super(props);
     this.updateChildHeights();
