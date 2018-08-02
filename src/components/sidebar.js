@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Hierarchy from './hierarchy';
+import Hierarchy from './hierarchy2';
 
 const Sidebar = () => (
   <div className='sidebar'>
