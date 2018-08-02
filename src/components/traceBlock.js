@@ -22,9 +22,11 @@ export default class Node extends React.Component {
     let traceHeight = this.props.nodes.byId[this.props.nodeId].traceHeight;
     let trace = [];
 
-    if(this.props.nodes.byId[this.props.nodeId].toggled) {
+    if(this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].parentNode].toggled) {
       trace.push(<path key={0} d={"M 10,0 v " + traceHeight} strokeWidth="8" stroke="black"/>)
-      trace.push(<path key={1} d={"M 10," + traceHeight+ " a 4 4 0 0 0 4 4"} strokeWidth="8" stroke="black"/>)
+      if(this.props.nodes.byId[this.props.nodeId].toggled) {
+        trace.push(<path key={1} d={"M 10," + traceHeight+ " a 4 4 0 0 0 4 4"} strokeWidth="8" stroke="black"/>)
+      }
 
       this.props.nodes.byId[this.props.nodeId].childHeights.forEach((height,i) => {
         trace.push(<path key={i+2} d={"M 14," + Number(height+4) + "h 25"} strokeWidth="8" stroke="black"/>)
