@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleNode, updateTrace} from '../actions/notedActions';
 
-import Node from './node'
+import Node from './node2'
 
 class Hierarchy extends React.Component {
   constructor(props){
@@ -14,7 +14,10 @@ class Hierarchy extends React.Component {
     return (
       <div className='hierarchy'>
         {this.props.nodes.byId[0].childNodes.map(nodeId =>
-          <Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTrace={this.props.updateTrace}/>
+          [<div className="nodeContainer" key={nodeId}>
+            <Node nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTrace={this.props.updateTrace}/>
+          </div>
+          ]
         )}
       </div>
     )
