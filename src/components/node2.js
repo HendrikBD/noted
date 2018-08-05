@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { toggleNode } from '../actions/notedActions';
 
-import TraceBlock from './traceBlock';
+import TraceBlock from './traceBlock2';
 
 
 class Node extends React.Component {
