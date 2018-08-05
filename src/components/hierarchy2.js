@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleNode, updateTrace} from '../actions/notedActions';
+import { toggleNode, updateTrace, setHeight} from '../actions/notedActions';
 
 import Node from './node2'
 
@@ -38,6 +38,9 @@ const mapDispatchToProps = dispatch => {
     },
     updateTrace: (id, traceUpdate) => {
       dispatch(updateTrace(id, traceUpdate))
+    },
+    setHeight: (id, height) => {
+      dispatch(setHeight(id, height))
     }
   }
 }
