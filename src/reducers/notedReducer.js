@@ -1,4 +1,4 @@
-import { TOGGLE_NODE, UPDATE_TRACE } from '../actions/types';
+import { TOGGLE_NODE, UPDATE_TRACE, SET_HEIGHT } from '../actions/types';
 import initialState from '../lib/initialState';
 
 export default function(state = initialState, action) {
@@ -13,6 +13,9 @@ export default function(state = initialState, action) {
         newState.nodes.byId[action.nodeId][key] = action.traceUpdate[key];
       })
       return newState;
+    case SET_HEIGHT:
+      newState.nodes.byId[action.nodeId].height = action.height;
+      return newState
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { TOGGLE_NODE, UPDATE_TRACE } from './types';
+import { TOGGLE_NODE, UPDATE_TRACE, SET_HEIGHT } from './types';
 
 export function toggleNode(nodeId) {
   return {
@@ -12,5 +12,13 @@ export function updateTrace(nodeId, traceUpdate) {
     type: UPDATE_TRACE,
     nodeId: nodeId,
     traceUpdate: traceUpdate
+  }
+}
+
+export function setHeight(nodeId, height) {
+  return {
+    type: SET_HEIGHT,
+    nodeId: nodeId,
+    height: height
   }
 }
