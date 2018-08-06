@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
       return newState;
     case UPDATE_TRACE:
       Object.keys(action.traceUpdate).forEach(key => {
-        newState.nodes.byId[action.nodeId][key] = action.traceUpdate[key];
+        newState.nodes.byId[action.nodeId].trace[key] = action.traceUpdate[key];
       })
       return newState;
     case SET_HEIGHT:
