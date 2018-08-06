@@ -17,10 +17,9 @@ const initialState = {
           toggled: true,
           parentNode: 0,
           childNodes: [2,5,10],
-          childHeights: [0,0,0],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [0,0,0],
             childTraceWidths: [0,0,0]
           },
 
@@ -33,10 +32,9 @@ const initialState = {
           toggled: true,
           parentNode: 1,
           childNodes: [3,4],
-          childHeights: [0,0],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [0,0],
             childTraceWidths: [0,0]
           },
 
@@ -49,10 +47,9 @@ const initialState = {
           toggled: false,
           parentNode: 2,
           childNodes: [9],
-          childHeights: [0],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [0],
             childTraceWidths: [0]
           },
 
@@ -65,10 +62,9 @@ const initialState = {
           toggled: false,
           parentNode: 2,
           childNodes: [],
-          childHeights: [],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [],
             childTraceWidths: []
           },
 
@@ -81,10 +77,9 @@ const initialState = {
           toggled: false,
           parentNode: 1,
           childNodes: [],
-          childHeights: [],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [],
             childTraceWidths: [0,0]
           },
 
@@ -97,10 +92,9 @@ const initialState = {
           toggled: true,
           parentNode: 0,
           childNodes: [7,8],
-          childHeights: [0,0],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [0,0],
             childTraceWidths: [0,0]
           },
 
@@ -113,9 +107,8 @@ const initialState = {
           toggled: false,
           parentNode: 6,
           childNodes: [],
-          childHeights: [],
-          height: 0,
           trace: {
+            childHeights: [],
             height: 0,
             childTraceWidths: [0,0]
           },
@@ -129,10 +122,9 @@ const initialState = {
           toggled: false,
           parentNode: 6,
           childNodes: [],
-          childHeights: [],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [],
             childTraceWidths: [0,0]
           },
 
@@ -145,10 +137,9 @@ const initialState = {
           toggled: false,
           parentNode: 3,
           childNodes: [],
-          childHeights: [],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [],
             childTraceWidths: [0,0]
           },
 
@@ -161,10 +152,9 @@ const initialState = {
           toggled: false,
           parentNode: 1,
           childNodes: [],
-          childHeights: [],
-          height: 0,
           trace: {
             height: 0,
+            childHeights: [],
             childTraceWidths: [0,0]
           },
 
