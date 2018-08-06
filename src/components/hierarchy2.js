@@ -12,14 +12,11 @@ class Hierarchy extends React.Component {
 
   render() {
     return (
-      <div className='hierarchy'>
+    <div className='hierarchy'>
         {this.props.nodes.byId[0].childNodes.map(nodeId =>
-          [<div className="nodeContainer" key={nodeId}>
-            <Node nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTrace={this.props.updateTrace}/>
-          </div>
-          ]
+          <Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTrace={this.props.updateTrace} setHeight={this.props.setHeight}/>
         )}
-      </div>
+    </div>
     )
   }
 }
