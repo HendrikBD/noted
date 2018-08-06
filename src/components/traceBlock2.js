@@ -54,10 +54,18 @@ export default class TraceBlock extends React.Component {
     this.updateTrace();
   }
 
+  getTraceHeight() {
+    let height = 0;
+    this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId =>
+      height += this.props.nodes.byId[nodeId].height
+    )
+    return height
+  }
+
   render() {
     let traceBlockHeight;
     traceBlockHeight = this.props.nodes.byId[this.props.nodeId].traceHeight+10;
-    let nodeHeight = this.props.nodes.byId[this.props.nodeId].height;
+    let nodeHeight = this.getTraceHeight();
     if(this.props.nodes.byId[this.props.nodeId].toggled) {
       traceBlockHeight +=8;
     }
@@ -66,7 +74,7 @@ export default class TraceBlock extends React.Component {
       <div className="traceBlock" style={{height: this.props.nodes.byId[this.props.nodeId].height + 'px'}}>
         <div className="trace" style={{height: nodeHeight}}>
           <svg>
-            <path key={0} d={"M 10,0 v " + this.props.nodes.byId[this.props.nodeId].height} strokeWidth="8" stroke="black"/>
+            <path key={0} d={"M 10,0 v " + nodeHeight} strokeWidth="8" stroke="black"/>
           </svg>
         </div>
       </div>
