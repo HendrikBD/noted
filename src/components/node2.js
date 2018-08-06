@@ -51,7 +51,7 @@ class Node extends React.Component {
     })
 
     return (
-      <div className={nodeClasses}>
+      <div className={nodeClasses} style={{height: this.props.nodes.byId[this.props.nodeId].height+'px'}}>
 
         <div className="head">
           <div className='icon' onClick={this.onClick.bind(this)}>

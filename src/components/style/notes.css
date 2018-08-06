@@ -29,9 +29,9 @@
 .node {
   display: grid;
   grid-template-columns: 20px 10px 1fr;
-  margin-top: 6px;
+  padding-top: 6px;
+  box-sizing: border-box;
 
-  /* height: 0px; */
   overflow: hidden;
 }
 
