@@ -8,10 +8,12 @@ import TraceBlock from './traceBlock2';
 class Node extends React.Component {
   constructor(props){
     super(props)
+    this.updateHeight();
   }
 
   onClick(){
     this.props.toggleNode(this.props.nodeId);
+    this.updateHeight();
     this.updateParentTrace()
   }
 
@@ -19,7 +21,20 @@ class Node extends React.Component {
     if(this.props.nodes.byId[this.props.nodeId].parentNode>0) {
       this.props.updateParentTrace();
     }
-    this.refs.trace.updateChildHeights();
+    this.updateHeight();
+  }
+
+  updateHeight() {
+    let height = this.getRenderHeight(this.props.nodeId);
+    this.props.setHeight(this.props.nodeId, height)
+  }
+
+  getRenderHeight(nodeId) {
+    let height = 0;
+    let nestedChildren = countNestedChildren(this.props.nodes,nodeId);
+    height = (nestedChildren+1)*28;
+
+    return height
   }
 
   render() {
