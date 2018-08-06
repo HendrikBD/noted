@@ -14,7 +14,7 @@ class Hierarchy extends React.Component {
     return (
     <div className='hierarchy'>
         {this.props.nodes.byId[0].childNodes.map(nodeId =>
-          <Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTrace={this.props.updateTrace} setHeight={this.props.setHeight}/>
+          <Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTraceState={this.props.updateTrace} setHeight={this.props.setHeight}/>
         )}
     </div>
     )
@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     toggle: id => {
       dispatch(toggleNode(id))
     },
-    updateTraceState: (id, traceUpdate) => {
+    updateTrace: (id, traceUpdate) => {
       dispatch(updateTrace(id, traceUpdate))
     },
     setHeight: (id, height) => {

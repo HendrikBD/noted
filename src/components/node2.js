@@ -54,7 +54,7 @@ class Node extends React.Component {
     this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId => {
 
       if(this.props.nodes.byId[this.props.nodes.byId[nodeId].parentNode].toggled) {
-        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTrace={this.props.updateTrace} updateParentTrace={this.updateParentTrace.bind(this)} setHeight={this.props.setHeight} />)
+        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)} setHeight={this.props.setHeight} />)
       }
     })
 
@@ -72,7 +72,7 @@ class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        <TraceBlock ref={'trace'} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTrace={this.props.updateTrace} updateParentTrace={this.updateParentTrace.bind(this)}/>
+        <TraceBlock ref={'trace'} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)}/>
 
         <div className="children">
           {childNodes}
