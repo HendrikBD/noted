@@ -60,11 +60,6 @@
   grid-column: 2/4;
 }
 
-.node .children {
-  grid-column: 3/4;
-  height: 0px;
-}
-
 .node.toggled {
   height: auto;
 }
