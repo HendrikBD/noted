@@ -3,7 +3,7 @@ import React from 'react';
 export default class TraceBlock extends React.Component {
   constructor(props){
     super(props);
-    // this.updateChildHeights();
+    this.updateChildHeights();
   }
 
   // Finds and returns the svg drawing to be rendered.
@@ -77,4 +77,16 @@ export default class TraceBlock extends React.Component {
       </div>
     )
   }
+}
+
+function countNestedChildren(nodes, nodeId) {
+  let nestedChildren = 0;
+
+  if(nodes.byId[nodeId].childNodes.length>0 && nodes.byId[nodeId].toggled){
+    nodes.byId[nodeId].childNodes.forEach((child) => {
+      nestedChildren++;
+      nestedChildren += countNestedChildren(nodes, child);
+    })
+  }
+  return nestedChildren;
 }
