@@ -31,7 +31,7 @@ export default class TraceBlock extends React.Component {
     let maxTrace = Math.max(0, ...this.props.nodes.byId[this.props.nodeId].childHeights);
     let traceDiff = (maxTrace - this.props.nodes.byId[this.props.nodeId].traceHeight);
 
-    this.props.updateTrace(this.props.nodeId, {traceHeight: node.traceHeight+2*Math.sign(traceDiff)});
+    this.props.updateTraceState(this.props.nodeId, {traceHeight: node.traceHeight+2*Math.sign(traceDiff)});
 
     // If the last childs width and the trace height are equal to the target values. When closing, target values are zero, when opening target values are a static width and the max trace
     if(this.props.nodes.byId[this.props.nodeId].traceHeight != maxTrace){
@@ -50,7 +50,7 @@ export default class TraceBlock extends React.Component {
         childHeights.push(28*(nestedChildren+1) + childHeights[i])
       }
     }
-    this.props.updateTrace(this.props.nodeId, {childHeights: childHeights})
+    this.props.updateTraceState(this.props.nodeId, {childHeights: childHeights})
     this.updateTrace();
   }
 

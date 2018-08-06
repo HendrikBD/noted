@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     toggle: id => {
       dispatch(toggleNode(id))
     },
-    updateTrace: (id, traceUpdate) => {
+    updateTraceState: (id, traceUpdate) => {
       dispatch(updateTrace(id, traceUpdate))
     },
     setHeight: (id, height) => {
