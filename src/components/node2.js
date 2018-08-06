@@ -39,12 +39,9 @@ class Node extends React.Component {
 
   getHeadSVG() {
     var trace = [
-      <circle cx='9' cy='9' r='7.5' strokeWidth='3' stroke='black' fill="none"></circle>,
-      <circle cx='9' cy='9' r='4.5' strokeWidth='1' fill="black"></circle>
+      <circle key='outerCircle' cx='9' cy='9' r='7.5' strokeWidth='3' stroke='black' fill="none"></circle>,
+      <circle key='innerCircle' cx='9' cy='9' r='4.5' strokeWidth='1' fill="black"></circle>
     ]
-    if(this.props.nodes.byId[this.props.nodeId].toggled) {
-      trace.push(<path d={"M 9,15 v 80"} stroke-width='8' stroke='black'/>);
-    }
 
     return trace
   }
