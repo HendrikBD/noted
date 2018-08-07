@@ -28,7 +28,10 @@ export default class TraceBlock extends React.Component {
   // Continually updates the trace height request animation frame. Decides whether vertical lines or horizontal lines should be changed. Will update the trace heights as well as all trace widths.
   updateTrace() {
     let node = this.props.nodes.byId[this.props.nodeId];
-    let maxTrace = Math.max(0, ...this.props.nodes.byId[this.props.nodeId].trace.childHeights);
+
+    // Calculating the maxTrace, where the vertical trace should terminate
+    let maxTrace = 28*(this.countNestedChildren(this.props.nodes, this.props.nodeId))-12;
+
     let traceDiff = (maxTrace - this.props.nodes.byId[this.props.nodeId].trace.height);
 
     this.props.updateTraceState(this.props.nodeId, {height: node.trace.height+2*Math.sign(traceDiff)});
@@ -61,6 +64,18 @@ export default class TraceBlock extends React.Component {
       height += this.props.nodes.byId[nodeId].height
     )
     return height
+  }
+
+  countNestedChildren(nodes, nodeId) {
+    let nestedChildren = 0;
+
+    if(nodes.byId[nodeId].childNodes.length>0 && nodes.byId[nodeId].toggled){
+      nodes.byId[nodeId].childNodes.forEach((child) => {
+        nestedChildren++;
+        nestedChildren += countNestedChildren(nodes, child);
+      })
+    }
+    return nestedChildren;
   }
 
   render() {
