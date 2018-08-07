@@ -42,7 +42,8 @@ export default class TraceBlock extends React.Component {
   // Calculates the heights of each child. If toggled off will return empty array. Should be called every time this node is, or any of its children is toggled. (Not when parent toggled)
   updateChildHeights() {
     let childHeights = [];
-    if(this.props.nodes.byId[this.props.nodeId].toggled) {
+
+    if(this.props.nodes.byId[this.props.nodeId].toggled && this.props.nodes.byId[this.props.nodeId].childNodes.length>0) {
       childHeights.push(16)
       for(let i=0; i<this.props.nodes.byId[this.props.nodeId].childNodes.length-1; i++){
         let child = this.props.nodes.byId[this.props.nodeId].childNodes[i];
@@ -72,7 +73,7 @@ export default class TraceBlock extends React.Component {
     return(
       <div className="traceBlock" height={traceBlockHeight + 'px'}>
           <svg height={traceBlockHeight + 'px'}>
-            {this.getTraceSVG()}
+            {(this.props.nodes.byId[this.props.nodeId].toggled && this.props.nodes.byId[this.props.nodeId].childNodes.length>0) ? this.getTraceSVG() : ''}
           </svg>
       </div>
     )
