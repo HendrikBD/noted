@@ -88,7 +88,7 @@ class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        <TraceBlock ref={this.trace} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)}/>
+        <TraceBlock ref={this.trace} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)} countNestedChildren={this.countNestedChildren}/>
 
         <div className="children">
           {childNodes}
