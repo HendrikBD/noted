@@ -18,6 +18,8 @@ const initialState = {
           parentNode: 0,
           childNodes: [2,5,10],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -35,6 +37,8 @@ const initialState = {
           parentNode: 1,
           childNodes: [3,4],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -52,6 +56,8 @@ const initialState = {
           parentNode: 2,
           childNodes: [9],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -69,6 +75,8 @@ const initialState = {
           parentNode: 2,
           childNodes: [],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -86,6 +94,8 @@ const initialState = {
           parentNode: 1,
           childNodes: [],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -103,6 +113,8 @@ const initialState = {
           parentNode: 0,
           childNodes: [7,8],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -120,6 +132,8 @@ const initialState = {
           parentNode: 6,
           childNodes: [],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -137,6 +151,8 @@ const initialState = {
           parentNode: 6,
           childNodes: [],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -154,6 +170,8 @@ const initialState = {
           parentNode: 3,
           childNodes: [],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -171,6 +189,8 @@ const initialState = {
           parentNode: 1,
           childNodes: [11],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
@@ -188,6 +208,8 @@ const initialState = {
           parentNode: 10,
           childNodes: [],
           trace: {
+            active: false,
+            completed: false,
             height: 0,
             blockHeight: 0,
             maxHeight: 0,
