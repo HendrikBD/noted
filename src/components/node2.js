@@ -8,12 +8,12 @@ import TraceBlock from './traceBlock2';
 class Node extends React.Component {
   constructor(props){
     super(props)
+    this.trace = React.createRef();
     this.updateHeight();
   }
 
   onClick(){
     this.props.toggleNode(this.props.nodeId);
-    this.updateHeight();
     this.updateParentTrace()
   }
 
@@ -21,7 +21,7 @@ class Node extends React.Component {
     if(this.props.nodes.byId[this.props.nodeId].parentNode>0) {
       this.props.updateParentTrace();
     }
-    this.updateHeight();
+    this.trace.current.updateChildHeights();
   }
 
   updateHeight() {
@@ -47,19 +47,25 @@ class Node extends React.Component {
   }
 
   render() {
+    // let traceOn = (this.props.nodes.byId[this.props.nodeId].childNodes.length>0 && this.props.nodes.byId[this.props.nodeId].toggled)
+    // var nodeClasses = (this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].parentNode].toggled) ? 'node toggled': 'node';
+
     var childNodes=[];
-    var nodeClasses = (this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].parentNode].toggled) ? 'node toggled': 'node';
-    let traceOn = (this.props.nodes.byId[this.props.nodeId].childNodes.length>0 && this.props.nodes.byId[this.props.nodeId].toggled)
+    var nodeClasses = 'node';
+    let traceBlockHeight = Math.max(0,...this.props.nodes.byId[this.props.nodeId].trace.childHeights);
+    let nodeHeight = traceBlockHeight+28;
 
-    this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId => {
+    if(this.props.nodes.byId[this.props.nodeId].toggled && this.props.nodes.byId[this.props.nodeId].childNodes.length>0) {
+      nodeHeight += 12;
 
-      if(this.props.nodes.byId[this.props.nodes.byId[nodeId].parentNode].toggled) {
+      this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId => {
         childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)} setHeight={this.props.setHeight} />)
-      }
-    })
+      })
+    }
+
 
     return (
-      <div className={nodeClasses} style={{height: this.props.nodes.byId[this.props.nodeId].height+'px'}}>
+      <div className={nodeClasses} style={{height: nodeHeight+'px'}}>
 
         <div className="head">
           <div className='icon' onClick={this.onClick.bind(this)}>
@@ -72,7 +78,7 @@ class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        <TraceBlock ref={'trace'} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)}/>
+        <TraceBlock ref={this.trace} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)}/>
 
         <div className="children">
           {childNodes}
