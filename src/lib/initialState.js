@@ -19,6 +19,7 @@ const initialState = {
           childNodes: [2,5,10],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [0,0,0],
             childTraceWidths: [0,0,0]
           },
@@ -34,6 +35,7 @@ const initialState = {
           childNodes: [3,4],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [0,0],
             childTraceWidths: [0,0]
           },
@@ -49,6 +51,7 @@ const initialState = {
           childNodes: [9],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [0],
             childTraceWidths: [0]
           },
@@ -64,6 +67,7 @@ const initialState = {
           childNodes: [],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [],
             childTraceWidths: []
           },
@@ -79,6 +83,7 @@ const initialState = {
           childNodes: [],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [],
             childTraceWidths: []
           },
@@ -94,6 +99,7 @@ const initialState = {
           childNodes: [7,8],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [0,0],
             childTraceWidths: [0,0]
           },
@@ -108,8 +114,9 @@ const initialState = {
           parentNode: 6,
           childNodes: [],
           trace: {
-            childHeights: [],
             height: 0,
+            maxHeight: 0,
+            childHeights: [],
             childTraceWidths: []
           },
 
@@ -124,6 +131,7 @@ const initialState = {
           childNodes: [],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [],
             childTraceWidths: []
           },
@@ -139,6 +147,7 @@ const initialState = {
           childNodes: [],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [],
             childTraceWidths: []
           },
@@ -154,6 +163,7 @@ const initialState = {
           childNodes: [],
           trace: {
             height: 0,
+            maxHeight: 0,
             childHeights: [],
             childTraceWidths: []
           },

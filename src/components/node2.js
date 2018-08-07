@@ -9,7 +9,7 @@ class Node extends React.Component {
   constructor(props){
     super(props)
     this.trace = React.createRef();
-    this.updateHeight();
+    this.props.updateTraceState(this.props.nodeId, {maxHeight: 28*(this.countNestedChildren.bind(this)(this.props.nodes, this.props.nodeId))})
   }
 
   onClick(){
@@ -22,6 +22,8 @@ class Node extends React.Component {
       this.props.updateParentTrace();
     }
     this.trace.current.updateChildHeights();
+    this.props.updateTraceState(this.props.nodeId, {maxHeight: 28*(this.countNestedChildren.bind(this)(this.props.nodes, this.props.nodeId))})
+
   }
 
   countNestedChildren(nodes, nodeId) {

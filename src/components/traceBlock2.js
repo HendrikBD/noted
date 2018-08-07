@@ -30,7 +30,7 @@ export default class TraceBlock extends React.Component {
     let node = this.props.nodes.byId[this.props.nodeId];
 
     // Calculating the maxTrace, where the vertical trace should terminate
-    let maxTrace = 28*(this.props.countNestedChildren(this.props.nodes, this.props.nodeId))-12;
+    let maxTrace = this.props.nodes.byId[this.props.nodeId].trace.maxHeight-12;
 
     let traceDiff = (maxTrace - this.props.nodes.byId[this.props.nodeId].trace.height);
 
@@ -67,7 +67,7 @@ export default class TraceBlock extends React.Component {
   }
 
   render() {
-    let traceBlockHeight = 28*(this.props.countNestedChildren(this.props.nodes, this.props.nodeId));
+    let traceBlockHeight = this.props.nodes.byId[this.props.nodeId].trace.maxHeight;
     let traceHeight = this.props.nodes.byId[this.props.nodeId].trace.height;
     if(this.props.nodes.byId[this.props.nodeId].toggled) {
       traceBlockHeight +=21;
