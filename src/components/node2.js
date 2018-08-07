@@ -14,12 +14,12 @@ class Node extends React.Component {
 
   onClick(){
     this.props.toggleNode(this.props.nodeId);
-    this.updateParentTrace()
+    this.updateParentTraces()
   }
 
-  updateParentTrace() {
+  updateParentTraces() {
     if(this.props.nodes.byId[this.props.nodeId].parentNode>0) {
-      this.props.updateParentTrace();
+      this.props.updateParentTraces();
     }
     this.trace.current.updateChildHeights();
     this.props.updateTraceState(this.props.nodeId, {maxHeight: 28*(this.countNestedChildren.bind(this)(this.props.nodes, this.props.nodeId))})
@@ -65,13 +65,13 @@ class Node extends React.Component {
 
     var childNodes=[];
     var nodeClasses = 'node';
-    let traceBlockHeight = 28*(this.countNestedChildren.bind(this)(this.props.nodes, this.props.nodeId));
+    let traceBlockHeight = this.props.nodes.byId[this.props.nodeId].trace.maxHeight;
     let nodeHeight = traceBlockHeight+28;
 
     if(traceOn) {
 
       this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId => {
-        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)} setHeight={this.props.setHeight} />)
+        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTraces={this.updateParentTraces.bind(this)} setHeight={this.props.setHeight} />)
       })
     }
 
@@ -90,7 +90,7 @@ class Node extends React.Component {
           {this.props.nodes.byId[this.props.nodeId].name}
         </div>
 
-        <TraceBlock ref={this.trace} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)} countNestedChildren={this.countNestedChildren}/>
+        <TraceBlock ref={this.trace} nodes={this.props.nodes} nodeId={this.props.nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTraces={this.updateParentTraces.bind(this)} countNestedChildren={this.countNestedChildren}/>
 
         <div className="children">
           {childNodes}
