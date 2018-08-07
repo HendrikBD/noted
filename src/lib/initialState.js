@@ -169,6 +169,23 @@ const initialState = {
           name: 'WebDev',
           toggled: false,
           parentNode: 1,
+          childNodes: [11],
+          trace: {
+            height: 0,
+            blockHeight: 0,
+            maxHeight: 0,
+            childHeights: [0],
+            childTraceWidths: [0]
+          },
+
+          traceHeight: 0,
+          traceWidths: [],
+        },
+        11: {
+          id: 11,
+          name: 'NodeJS',
+          toggled: false,
+          parentNode: 10,
           childNodes: [],
           trace: {
             height: 0,
