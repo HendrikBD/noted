@@ -24,6 +24,17 @@ class Node extends React.Component {
     this.trace.current.updateChildHeights();
   }
 
+  countNestedChildren(nodes, nodeId) {
+    let nestedChildren = 0;
+    if(nodes.byId[nodeId].childNodes.length>0 && nodes.byId[nodeId].toggled){
+      nodes.byId[nodeId].childNodes.forEach((child) => {
+        nestedChildren++;
+        nestedChildren += this.countNestedChildren.bind(this)(nodes, child);
+      })
+    }
+    return nestedChildren;
+  }
+
   updateHeight() {
     let height = this.getRenderHeight(this.props.nodeId);
     this.props.setHeight(this.props.nodeId, height)
@@ -31,7 +42,7 @@ class Node extends React.Component {
 
   getRenderHeight(nodeId) {
     let height = 0;
-    let nestedChildren = countNestedChildren(this.props.nodes,nodeId);
+    let nestedChildren = this.countNestedChildren(this.props.nodes,nodeId);
     height = (nestedChildren+1)*28;
 
     return height
@@ -52,11 +63,10 @@ class Node extends React.Component {
 
     var childNodes=[];
     var nodeClasses = 'node';
-    let traceBlockHeight = Math.max(0,...this.props.nodes.byId[this.props.nodeId].trace.childHeights);
+    let traceBlockHeight = 28*(this.countNestedChildren.bind(this)(this.props.nodes, this.props.nodeId));
     let nodeHeight = traceBlockHeight+28;
 
     if(traceOn) {
-      nodeHeight += 12;
 
       this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId => {
         childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTrace={this.updateParentTrace.bind(this)} setHeight={this.props.setHeight} />)
@@ -99,17 +109,5 @@ class Node extends React.Component {
 //     allIds: PropTypes.arrayOf(PropTypes.number).isRequired
 //   })
 // }
-
-function countNestedChildren(nodes, nodeId) {
-  let nestedChildren = 0;
-
-  if(nodes.byId[nodeId].childNodes.length>0 && nodes.byId[nodeId].toggled){
-    nodes.byId[nodeId].childNodes.forEach((child) => {
-      nestedChildren++;
-      nestedChildren += countNestedChildren(nodes, child);
-    })
-  }
-  return nestedChildren;
-}
 
 export default Node
