@@ -80,7 +80,7 @@ const initialState = {
           trace: {
             height: 0,
             childHeights: [],
-            childTraceWidths: [0,0]
+            childTraceWidths: []
           },
 
           traceHeight: 0,
@@ -110,7 +110,7 @@ const initialState = {
           trace: {
             childHeights: [],
             height: 0,
-            childTraceWidths: [0,0]
+            childTraceWidths: []
           },
 
           traceHeight: 0,
@@ -125,7 +125,7 @@ const initialState = {
           trace: {
             height: 0,
             childHeights: [],
-            childTraceWidths: [0,0]
+            childTraceWidths: []
           },
 
           traceHeight: 0,
@@ -140,7 +140,7 @@ const initialState = {
           trace: {
             height: 0,
             childHeights: [],
-            childTraceWidths: [0,0]
+            childTraceWidths: []
           },
 
           traceHeight: 0,
@@ -155,7 +155,7 @@ const initialState = {
           trace: {
             height: 0,
             childHeights: [],
-            childTraceWidths: [0,0]
+            childTraceWidths: []
           },
 
           traceHeight: 0,
