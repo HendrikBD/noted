@@ -3,7 +3,7 @@ import React from 'react';
 export default class TraceBlock extends React.Component {
   constructor(props){
     super(props);
-    this.updateChildHeights();
+    this.updateTrace();
   }
 
   // Finds and returns the svg drawing to be rendered.
@@ -27,6 +27,7 @@ export default class TraceBlock extends React.Component {
 
   // Continually updates the trace height request animation frame. Decides whether vertical lines or horizontal lines should be changed. Will update the trace heights as well as all trace widths.
   updateTrace() {
+    this.updateChildHeights();
     let node = this.props.nodes.byId[this.props.nodeId];
 
     // Calculating the maxTrace, where the vertical trace should terminate

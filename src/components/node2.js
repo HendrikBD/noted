@@ -21,7 +21,7 @@ class Node extends React.Component {
     if(this.props.nodes.byId[this.props.nodeId].parentNode>0) {
       this.props.updateParentTraces();
     }
-    this.trace.current.updateChildHeights();
+    this.trace.current.updateTrace();
     this.props.updateTraceState(this.props.nodeId, {maxHeight: 28*(this.countNestedChildren.bind(this)(this.props.nodes, this.props.nodeId))})
 
   }
