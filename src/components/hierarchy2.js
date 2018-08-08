@@ -11,15 +11,28 @@ class Hierarchy extends React.Component {
   }
 
   // Function to coordinate drawing of traces, will be called before each frame while there are still updates to be made
-  updateTraces() {
+  updateActiveTraces() {
+    let nodes = this.props.nodes;
+    let activeNodes = nodes.active;
+
     // Update all traces of active nodes. (Inactive nodes should be set to automatically respond to changes in height)
+    activeNodes.forEach( nodeId =>
+      this.updateTrace(nodeId)
+    )
+
     //
+    // If any node is still active, call function again prior to next frame
+    if(activeNodes.length>0) {
+      window.requestAnimationFrame(this.updateActiveTraces.bind(this))
+    }
+  }
+
+  updateTrace() {
+    // Update trace values of node
     // Check if any trace has reach another node
     // if yes, activate the node, and check if this trace is completed (last childNode)
     //
     // if trace is completed, set as inactive & set component trace height to respond to child changes
-    //
-    // if any active nodes, recall fn before next frame
   }
 
   render() {
