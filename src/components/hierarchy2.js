@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleNode, updateTrace, setHeight} from '../actions/notedActions';
+import { toggleNode, updateTrace, setHeight } from '../actions/notedActions';
 
 import Node from './node2'
 
@@ -11,7 +11,15 @@ class Hierarchy extends React.Component {
   }
 
   // Function to coordinate drawing of traces, will be called before each frame while there are still updates to be made
-  updateTraces(nodeId) {
+  updateTraces() {
+    // Update all traces of active nodes. (Inactive nodes should be set to automatically respond to changes in height)
+    //
+    // Check if any trace has reach another node
+    // if yes, activate the node, and check if this trace is completed (last childNode)
+    //
+    // if trace is completed, set as inactive & set component trace height to respond to child changes
+    //
+    // if any active nodes, recall fn before next frame
   }
 
   render() {
