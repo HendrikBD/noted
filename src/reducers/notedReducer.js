@@ -11,6 +11,16 @@ export default function(state = initialState, action) {
     case UPDATE_TRACE:
       Object.keys(action.traceUpdate).forEach(key => {
         newState.nodes.byId[action.nodeId].trace[key] = action.traceUpdate[key];
+        if(key==='active') {
+          if(newState.nodes.byId[action.nodeId].trace.active===true) {
+            newState.nodes.active.push(action.nodeId);
+          } else {
+            let index = newState.nodes.active.indexOf(action.nodeId)
+            if(index>-1) {
+              newState.nodes.active.splice(index, 1);
+            }
+          }
+        }
       })
       return newState;
     case SET_HEIGHT:
