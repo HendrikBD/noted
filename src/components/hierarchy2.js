@@ -9,50 +9,54 @@ class Hierarchy extends React.Component {
   constructor(props){
     super(props)
     props.nodes.byId[0].childNodes.forEach(nodeId => {
-      props.updateTrace(nodeId, {active: true})
+      this.drawTrace(nodeId);
     })
-    this.updateActiveTraces()
   }
 
-  // Function to coordinate drawing of traces, will be called before each frame while there are still updates to be made
-  updateActiveTraces() {
-    let nodes = this.props.nodes;
-    let activeNodes = nodes.active;
+  // Deals with drawing the trace
+  // Simply draws the trace and starts the children
+  drawTrace(nodeId) {
+    var node = this.props.nodes.byId[nodeId];
+    var incrementalTrace;
 
-    // Update all traces of active nodes. (Inactive nodes should be set to automatically respond to changes in height)
-    activeNodes.forEach( nodeId =>
-      this.updateTrace(nodeId)
-    )
+    let index = node.trace.horizontalTraceTrigs.lastIndexOf(true);
 
-    //
-    // If any node is still active, call function again prior to next frame
-    if(activeNodes.length>0) {
-      window.requestAnimationFrame(this.updateActiveTraces.bind(this))
-    }
-  }
 
-  updateTrace(nodeId) {
+    incrementalTrace = (index>-1) ? node.trace.height - node.trace.childHeights[node.trace.horizontalTraceTrigs.lastIndexOf(true)] : node.trace.height;
     this.updateChildHeights(nodeId);
+    incrementalTrace = (index>-1) ? incrementalTrace + node.trace.childHeights[node.trace.horizontalTraceTrigs.lastIndexOf(true)] : node.trace.height;
 
-    let node = this.props.nodes.byId[nodeId];
-    let maxTrace = node.trace.childHeights[node.trace.childHeights.length-1];
-    maxTrace = (maxTrace>0) ? maxTrace : 0;
-    let traceDiff = (maxTrace - this.props.nodes.byId[nodeId].trace.height);
-
-    this.props.updateTrace(nodeId, {height: node.trace.height+2*Math.sign(traceDiff)});
-
-    if(node.trace.height>=node.trace.childHeights[node.trace.childHeights.length-1]) {
-      this.props.updateTrace(nodeId, {active: false})
+    if(!node.trace.horizontalTraceTrigs[node.trace.horizontalTraceTrigs.length-1]) {
+      this.props.updateTrace(nodeId, {height: incrementalTrace+2});
     }
 
+    // Ensure that trace.height > childHeights if it has already passed them
     this.updateBlockHeight(nodeId)
 
-    // Update trace values of node
-    // Check if any trace has reach another node
-    // if yes, activate the node, and check if this trace is completed (last childNode)
-    //
-    // if trace is completed, set as inactive & set component trace height to respond to child changes
     // 
+    // Check each child; if trace.height> childHeight && childWidth<25, increment horizontal trace
+    // If horizontal trace reaches end, start next trace (do in conditional to ensure it only occurs once)
+    node.trace.childHeights.forEach((childHeight, i) => {
+      if(!node.trace.horizontalTraceTrigs[i] && node.trace.height>=childHeight) {
+        let horizontalTraceTrigs = node.trace.horizontalTraceTrigs.slice();
+        horizontalTraceTrigs[i] = true;
+        this.props.updateTrace(nodeId, {horizontalTraceTrigs: horizontalTraceTrigs});
+      }
+      if(node.trace.horizontalTraceTrigs[i] && node.trace.childTraceWidths[i]<25) {
+        let childTraceWidths = node.trace.childTraceWidths.slice();
+        childTraceWidths[i] +=2;
+        childTraceWidths[i] = childTraceWidths[i]>25 ? 25 : childTraceWidths[i];
+        this.props.updateTrace(nodeId, {childTraceWidths: childTraceWidths});
+      }
+    })
+    // console.log(node.trace.childTraceWidths)
+
+    if(node.toggled && node.trace.childTraceWidths[node.trace.childTraceWidths.length-1]<25) {
+      window.requestAnimationFrame(() => this.drawTrace(nodeId));
+    }
+  }
+
+  updateTraces(nodeId) {
   }
 
   updateChildHeights(nodeId) {
