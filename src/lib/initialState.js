@@ -24,6 +24,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [0,0,0],
+            horizontalTraceTrigs: [false, false, false],
             childTraceWidths: [0,0,0]
           },
 
@@ -43,6 +44,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [0,0],
+            horizontalTraceTrigs: [false, false],
             childTraceWidths: [0,0]
           },
 
@@ -62,6 +64,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [0],
+            horizontalTraceTrigs: [false],
             childTraceWidths: [0]
           },
 
@@ -81,6 +84,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [],
+            horizontalTraceTrigs: [],
             childTraceWidths: []
           },
 
@@ -100,6 +104,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [],
+            horizontalTraceTrigs: [],
             childTraceWidths: []
           },
 
@@ -119,6 +124,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [0,0],
+            horizontalTraceTrigs: [false, false],
             childTraceWidths: [0,0]
           },
 
@@ -138,6 +144,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [],
+            horizontalTraceTrigs: [],
             childTraceWidths: []
           },
 
@@ -157,6 +164,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [],
+            horizontalTraceTrigs: [],
             childTraceWidths: []
           },
 
@@ -176,6 +184,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [],
+            horizontalTraceTrigs: [],
             childTraceWidths: []
           },
 
@@ -195,6 +204,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [0],
+            horizontalTraceTrigs: [false],
             childTraceWidths: [0]
           },
 
@@ -214,6 +224,7 @@ const initialState = {
             blockHeight: 0,
             maxHeight: 0,
             childHeights: [],
+            horizontalTraceTrigs: [],
             childTraceWidths: []
           },
 
