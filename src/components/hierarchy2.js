@@ -41,6 +41,8 @@ class Hierarchy extends React.Component {
         let horizontalTraceTrigs = node.trace.horizontalTraceTrigs.slice();
         horizontalTraceTrigs[i] = true;
         this.props.updateTrace(nodeId, {horizontalTraceTrigs: horizontalTraceTrigs});
+
+        this.drawTrace(node.childNodes[i]);
       }
       if(node.trace.horizontalTraceTrigs[i] && node.trace.childTraceWidths[i]<25) {
         let childTraceWidths = node.trace.childTraceWidths.slice();
