@@ -42,12 +42,14 @@ class Hierarchy extends React.Component {
         horizontalTraceTrigs[i] = true;
         this.props.updateTrace(nodeId, {horizontalTraceTrigs: horizontalTraceTrigs});
 
-        this.drawTrace(node.childNodes[i]);
       }
       if(node.trace.horizontalTraceTrigs[i] && node.trace.childTraceWidths[i]<25) {
         let childTraceWidths = node.trace.childTraceWidths.slice();
         childTraceWidths[i] +=2;
-        childTraceWidths[i] = childTraceWidths[i]>25 ? 25 : childTraceWidths[i];
+        if(childTraceWidths[i]>=25) {
+          childTraceWidths[i] = 25;
+          this.drawTrace(node.childNodes[i])
+        }
         this.props.updateTrace(nodeId, {childTraceWidths: childTraceWidths});
       }
     })
@@ -92,7 +94,7 @@ class Hierarchy extends React.Component {
     return (
     <div className='hierarchy'>
         {this.props.nodes.byId[0].childNodes.map(nodeId =>
-          <Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTraceState={this.props.updateTrace} setHeight={this.props.setHeight} updateTraces={this.updateActiveTraces.bind(this)}/>
+          <Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggle} updateTraceState={this.props.updateTrace} setHeight={this.props.setHeight} updateTraces={this.updateTraces.bind(this)} />
         )}
     </div>
     )
