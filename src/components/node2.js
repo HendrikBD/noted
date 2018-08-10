@@ -85,7 +85,7 @@ class Node extends React.Component {
     if(traceOn) {
 
       this.props.nodes.byId[this.props.nodeId].childNodes.forEach(nodeId => {
-        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTraces={this.updateParentTraces.bind(this)} setHeight={this.props.setHeight} updateTraces={this.props.updateTraces}/>)
+        childNodes.push(<Node key={nodeId} nodes={this.props.nodes} nodeId={nodeId} toggleNode={this.props.toggleNode} updateTraceState={this.props.updateTraceState} updateParentTraces={this.updateParentTraces.bind(this)} setHeight={this.props.setHeight} updateTraces={this.props.updateTraces} eraseNestedTraces={this.props.eraseNestedTraces} drawTrace={this.props.drawTrace}/>)
       })
     }
 
