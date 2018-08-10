@@ -16,7 +16,7 @@ const initialState = {
           name: 'Software',
           toggled: true,
           parentNode: 0,
-          childNodes: [2,5,10],
+          childNodes: [5,10,2],
           trace: {
             active: false,
             completed: false,
@@ -54,7 +54,7 @@ const initialState = {
         3: {
           id: 3,
           name: 'Hopper',
-          toggled: false,
+          toggled: true,
           parentNode: 2,
           childNodes: [9],
           trace: {
