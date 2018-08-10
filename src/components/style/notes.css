@@ -38,7 +38,14 @@
 }
 
 .node.toggled {
-  height: auto;
+}
+
+.hirearchy>.node {
+  /* height: auto; */
+  /* padding-top: 6px; */
+}
+
+.node.toggled>.children>.node {
 }
 
 .node .head .icon {
