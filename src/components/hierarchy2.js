@@ -116,6 +116,20 @@ class Hierarchy extends React.Component {
 
     if(node.trace.height>0) {
       window.requestAnimationFrame(() => this.eraseTrace.bind(this)(nodeId))
+    } else {
+      this.hideTraceBlock.bind(this)(nodeId);
+    }
+  }
+
+  hideTraceBlock(nodeId) {
+    console.log('hide')
+    let node = this.props.nodes.byId[nodeId]
+    let blockHeight = node.trace.blockHeight-2;
+
+    blockHeight = blockHeight<0 ? 0 : blockHeight;
+    this.props.updateTrace(nodeId, {blockHeight: blockHeight})
+    if(blockHeight>0) {
+      window.requestAnimationFrame(()=>this.hideTraceBlock.bind(this)(nodeId));
     }
   }
 
