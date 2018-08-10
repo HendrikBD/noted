@@ -74,14 +74,13 @@ class Node extends React.Component {
   }
 
   render() {
-    let traceOn = (this.props.nodes.byId[this.props.nodeId].toggled && this.props.nodes.byId[this.props.nodeId].childNodes.length>0)
+    let traceOn = (this.props.nodes.byId[this.props.nodeId].childNodes.length>0)
     let node = this.props.nodes.byId[this.props.nodeId];
-    // var nodeClasses = (this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].parentNode].toggled) ? 'node toggled': 'node';
 
     var childNodes=[];
     var nodeClasses = 'node';
     let traceBlockHeight = this.props.nodes.byId[this.props.nodeId].trace.blockHeight;
-    let nodeHeight = node.toggled ? this.getTraceBlockHeight.bind(this)(node.id)+28 : 28;
+    let nodeHeight = this.getTraceBlockHeight.bind(this)(node.id)+28;
 
     if(traceOn) {
 
