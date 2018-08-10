@@ -10,7 +10,6 @@ class Hierarchy extends React.Component {
     super(props)
     props.nodes.byId[0].childNodes.forEach(nodeId => {
       this.drawTrace(nodeId);
-      setTimeout(()=>this.eraseNestedTraces.bind(this)(nodeId), 3000);
     })
   }
 
