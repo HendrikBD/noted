@@ -27,7 +27,7 @@ class Hierarchy extends React.Component {
     this.updateChildHeights(nodeId);
     incrementalTrace = (index>-1) ? incrementalTrace + node.trace.childHeights[node.trace.horizontalTraceTrigs.lastIndexOf(true)] : node.trace.height;
 
-    if(!node.trace.horizontalTraceTrigs[node.trace.horizontalTraceTrigs.length-1]) {
+    if(!node.trace.horizontalTraceTrigs[node.trace.horizontalTraceTrigs.length-1] && node.toggled && node.childNodes.length>0) {
       this.props.updateTrace(nodeId, {height: incrementalTrace+2});
     }
 
