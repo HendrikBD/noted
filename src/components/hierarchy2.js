@@ -145,6 +145,11 @@ class Hierarchy extends React.Component {
   updateBlockHeight(nodeId){
     let node = this.props.nodes.byId[nodeId];
     let blockHeight = node.trace.height + 12;
+    if(node.childNodes.length>0 && this.props.nodes.byId[node.childNodes[node.childNodes.length-1]].toggled) {
+      let lastChild = this.props.nodes.byId[node.childNodes[node.childNodes.length-1]];
+      this.updateBlockHeight(lastChild.id)
+      blockHeight += lastChild.trace.blockHeight
+    }
     // let blockHeight = node.toggled ? node.trace.height + 40 : 0;
     // blockHeight += (node.childNodes.length>0) ? this.props.nodes[node.childNodes[node.childNodes.length-1]].trace.blockHeight : 
     this.props.updateTrace(nodeId, {blockHeight: blockHeight})
