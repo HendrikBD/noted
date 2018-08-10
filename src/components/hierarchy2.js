@@ -10,6 +10,7 @@ class Hierarchy extends React.Component {
     super(props)
     props.nodes.byId[0].childNodes.forEach(nodeId => {
       this.drawTrace(nodeId);
+      setTimeout(()=>this.eraseNestedTraces.bind(this)(nodeId), 3000);
     })
   }
 
@@ -58,6 +59,23 @@ class Hierarchy extends React.Component {
     if(node.toggled && node.trace.childTraceWidths[node.trace.childTraceWidths.length-1]<25) {
       window.requestAnimationFrame(() => this.drawTrace(nodeId));
     }
+  }
+
+  eraseNestedTraces(nodeId) {
+    var node = this.props.nodes.byId[nodeId];
+
+    node.childNodes.forEach(childId => {
+      let child = this.props.nodes.byId[childId];
+      if(child.toggled && child.childNodes.length>0) {
+        this.eraseNestedTraces.bind(this)(childId);
+      }
+    })
+
+    this.eraseTrace(nodeId);
+  }
+
+  eraseTrace(nodeId) {
+    var node = this.props.nodes.byId[nodeId];
   }
 
   updateTraces(nodeId) {
