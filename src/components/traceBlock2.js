@@ -18,7 +18,7 @@ export default class TraceBlock extends React.Component {
       }
 
       this.props.nodes.byId[this.props.nodeId].trace.childHeights.forEach((height,i) => {
-        trace.push(<path key={i+2} d={"M 14," + Number(height+4) + "h 25"} strokeWidth="8" stroke="black"/>)
+        trace.push(<path key={i+2} d={"M 14," + Number(height+4) + " h " + this.props.nodes.byId[this.props.nodeId].trace.childTraceWidths[i]} strokeWidth="8" stroke="black"/>)
       })
     }
 
@@ -75,7 +75,8 @@ export default class TraceBlock extends React.Component {
   }
 
   render() {
-    let traceBlockHeight = this.props.nodes.byId[this.props.nodeId].trace.maxHeight;
+    let traceBlockHeight = this.props.nodes.byId[this.props.nodeId].trace.blockHeight;
+
     let traceHeight = this.props.nodes.byId[this.props.nodeId].trace.height;
     if(this.props.nodes.byId[this.props.nodeId].toggled) {
       traceBlockHeight +=21;
