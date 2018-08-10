@@ -3,7 +3,6 @@ import React from 'react';
 export default class TraceBlock extends React.Component {
   constructor(props){
     super(props);
-    this.updateTrace();
   }
 
   // Finds and returns the svg drawing to be rendered.
@@ -35,13 +34,15 @@ export default class TraceBlock extends React.Component {
     maxTrace = (maxTrace>0) ? maxTrace : 0;
 
     let traceDiff = (maxTrace - this.props.nodes.byId[this.props.nodeId].trace.height);
-
     this.props.updateTraceState(this.props.nodeId, {height: node.trace.height+2*Math.sign(traceDiff)});
+
 
     // If the last childs width and the trace height are equal to the target values. When closing, target values are zero, when opening target values are a static width and the max trace
     if(this.props.nodes.byId[this.props.nodeId].trace.height != maxTrace){
       window.requestAnimationFrame(this.updateTrace.bind(this))
     }
+
+    this.updateBlockHeight();
   }
 
   // Calculates the heights of each child. If toggled off will return empty array. Should be called every time this node is, or any of its children is toggled. (Not when parent toggled)
@@ -53,17 +54,20 @@ export default class TraceBlock extends React.Component {
 
       for(let i=1; i<this.props.nodes.byId[this.props.nodeId].childNodes.length; i++){
         let child = this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].childNodes[i]];
-        let childHeight = childHeights[i-1];
+        let childHeight = childHeights[i-1] + 28;
         if(this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].childNodes[i-1]].toggled && this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].childNodes[i-1]].childNodes.length>0) {
-          childHeight += this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].childNodes[i-1]].trace.height + 40;
-        } else {
-          childHeight += 28;
+          childHeight += this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].childNodes[i-1]].trace.blockHeight;
         }
         childHeights.push(childHeight);
       }
 
     }
     this.props.updateTraceState(this.props.nodeId, {childHeights: childHeights})
+  }
+
+  updateBlockHeight(){
+    let node = this.props.nodes.byId[this.props.nodeId];
+    let blockHeight = node.trace.height + 12;
   }
 
   getTraceHeight() {
