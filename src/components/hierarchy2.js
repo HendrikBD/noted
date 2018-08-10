@@ -124,8 +124,9 @@ class Hierarchy extends React.Component {
 
   updateChildHeights(nodeId) {
     let childHeights = [];
+    var node = this.props.nodes.byId[nodeId];
 
-    if(this.props.nodes.byId[nodeId].toggled && this.props.nodes.byId[nodeId].childNodes.length>0) {
+    if(this.props.nodes.byId[nodeId].childNodes.length>0) {
       childHeights.push(16)
 
       for(let i=1; i<this.props.nodes.byId[nodeId].childNodes.length; i++){
