@@ -76,18 +76,47 @@ class Hierarchy extends React.Component {
 
   eraseTrace(nodeId) {
     var node = this.props.nodes.byId[nodeId];
+    var incrementalTrace;
 
     let childTraceWidths = node.trace.childTraceWidths.slice();
 
     node.childNodes.forEach((childId, i) => {
       let child = this.props.nodes.byId[childId];
-      console.log(child.name + ': ' + child.trace.height)
-      if(child.trace.height===0) {
-        childTraceWidths[i] -=10;
-        childTraceWidths[i] = childTraceWidths[i]<0 ? 0 : childTraceWidths[i];
+      // console.log(child.name + ': ' + child.trace.height)
+      if(child.trace.height===0 && childTraceWidths[i]>0) {
+        childTraceWidths[i] -=2;
+        if(childTraceWidths[i]<=0) {
+          childTraceWidths[i] = 0;
+          let traceTrigs = node.trace.horizontalTraceTrigs.slice();
+          traceTrigs[i] = false;
+          this.props.updateTrace(nodeId, {horizontalTraceTrigs: traceTrigs});
+        }
       }
     })
     this.props.updateTrace(nodeId, {childTraceWidths: childTraceWidths});
+
+
+    let index = node.trace.horizontalTraceTrigs.lastIndexOf(true);
+
+    incrementalTrace = (index>-1) ? node.trace.height - node.trace.childHeights[node.trace.horizontalTraceTrigs.lastIndexOf(true)] : node.trace.height;
+    this.updateChildHeights(nodeId);
+    incrementalTrace = (index>-1) ? incrementalTrace + node.trace.childHeights[node.trace.horizontalTraceTrigs.lastIndexOf(true)] : node.trace.height;
+
+    incrementalTrace -= 2;
+
+    if(index>-1) {
+      incrementalTrace = (incrementalTrace<node.trace.childHeights[index]) ? node.trace.childHeights[index] : incrementalTrace;
+    } else {
+      incrementalTrace = (incrementalTrace<0) ? 0 : incrementalTrace;
+    }
+
+    this.props.updateTrace(nodeId, {height: incrementalTrace});
+
+    this.updateBlockHeight(nodeId)
+
+    if(node.trace.height>0) {
+      window.requestAnimationFrame(() => this.eraseTrace.bind(this)(nodeId))
+    }
   }
 
   updateTraces(nodeId) {
