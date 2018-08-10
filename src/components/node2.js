@@ -14,11 +14,12 @@ class Node extends React.Component {
 
   onClick(){
     this.props.toggleNode(this.props.nodeId);
-    this.props.updateTraces();
-    // this.updateTrace.bind(this);
-    //
-    // this.trace.current.updateTrace()
-    // this.updateParentTraces();
+
+    if(this.props.nodes.byId[this.props.nodeId].toggled) {
+      this.props.drawTrace(this.props.nodeId);
+    } else {
+      this.props.eraseNestedTraces(this.props.nodeId);
+    }
   }
 
   updateParentTraces() {
