@@ -12,7 +12,7 @@ export default class TraceBlock extends React.Component {
 
     if(this.props.nodes.byId[this.props.nodes.byId[this.props.nodeId].parentNode].toggled) {
       trace.push(<path key={0} d={"M 10,0 v " + traceHeight} strokeWidth="8" stroke="black"/>)
-      if(this.props.nodes.byId[this.props.nodeId].toggled) {
+      if(this.props.nodes.byId[this.props.nodeId].trace.blockHeight>0) {
         trace.push(<path key={1} d={"M 10," + traceHeight+ " a 4 4 0 0 0 4 4"} strokeWidth="8" stroke="black"/>)
       }
 
@@ -87,9 +87,9 @@ export default class TraceBlock extends React.Component {
     }
 
     return(
-      <div className="traceBlock" height={traceBlockHeight + 'px'}>
-          <svg height={traceBlockHeight + 'px'}>
-            {(this.props.nodes.byId[this.props.nodeId].toggled && this.props.nodes.byId[this.props.nodeId].childNodes.length>0) ? this.getTraceSVG() : ''}
+      <div className="traceBlock" style={{height: traceBlockHeight + 'px'}}>
+          <svg>
+            {(this.props.nodes.byId[this.props.nodeId].childNodes.length>0) ? this.getTraceSVG() : ''}
           </svg>
       </div>
     )
