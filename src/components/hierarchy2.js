@@ -76,6 +76,18 @@ class Hierarchy extends React.Component {
 
   eraseTrace(nodeId) {
     var node = this.props.nodes.byId[nodeId];
+
+    let childTraceWidths = node.trace.childTraceWidths.slice();
+
+    node.childNodes.forEach((childId, i) => {
+      let child = this.props.nodes.byId[childId];
+      console.log(child.name + ': ' + child.trace.height)
+      if(child.trace.height===0) {
+        childTraceWidths[i] -=10;
+        childTraceWidths[i] = childTraceWidths[i]<0 ? 0 : childTraceWidths[i];
+      }
+    })
+    this.props.updateTrace(nodeId, {childTraceWidths: childTraceWidths});
   }
 
   updateTraces(nodeId) {
